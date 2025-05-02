@@ -305,13 +305,13 @@ export default function PredictPage() {
                   value="date"
                   className="data-[state=active]:bg-blue-600 data-[state=active]:text-white transition-all duration-300"
                 >
-                  Date-Based Prediction
+                  Date Prediction
                 </TabsTrigger>
                 <TabsTrigger
                   value="parameters"
                   className="data-[state=active]:bg-blue-600 data-[state=active]:text-white transition-all duration-300"
                 >
-                  Parameter-Based Prediction
+                  Parameter Prediction
                 </TabsTrigger>
               </TabsList>
 
