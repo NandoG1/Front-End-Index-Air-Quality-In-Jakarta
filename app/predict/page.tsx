@@ -411,37 +411,37 @@ export default function PredictPage() {
                         <ParameterSlider
                           name="so2"
                           label="SO2"
-                          unit="ppb"
+                          unit="ppm"
                           min={0}
                           max={300}
                           step={1}
                           defaultValue={parameters.so2}
                           onChange={(value) => handleParameterChange("so2", value)}
-                          description="Sulfur dioxide concentration in parts per billion"
+                          description="Sulfur dioxide concentration in parts per million"
                         />
 
                         <ParameterSlider
                           name="no2"
                           label="NO2"
-                          unit="ppb"
+                          unit="ppm"
                           min={0}
                           max={300}
                           step={1}
                           defaultValue={parameters.no2}
                           onChange={(value) => handleParameterChange("no2", value)}
-                          description="Nitrogen dioxide concentration in parts per billion"
+                          description="Nitrogen dioxide concentration in parts per million"
                         />
 
                         <ParameterSlider
                           name="o3"
                           label="O3"
-                          unit="ppb"
+                          unit="ppm"
                           min={0}
                           max={300}
                           step={1}
                           defaultValue={parameters.o3}
                           onChange={(value) => handleParameterChange("o3", value)}
-                          description="Ozone concentration in parts per billion"
+                          description="Ozone concentration in parts per million"
                         />
                       </div>
 
