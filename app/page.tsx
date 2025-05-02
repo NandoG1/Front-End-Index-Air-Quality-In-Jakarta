@@ -86,75 +86,6 @@ export default function Home() {
     [],
   )
 
-  const features = React.useMemo(
-    () => [
-      // {
-      //   icon: <Thermometer className="h-10 w-10 text-white" />,
-      //   title: "Date-Based Prediction",
-      //   description:
-      //     "Input any date to get accurate weather classification predictions for Jakarta based on historical patterns.",
-      // },
-      // {
-      //   icon: <Wind className="h-10 w-10 text-white" />,
-      //   title: "Parameter-Based Analysis",
-      //   description:
-      //     "Enter specific weather parameters like PM10, CO2, O2 levels for detailed classification and analysis.",
-      // },
-      // {
-      //   icon: <CloudRain className="h-10 w-10 text-white" />,
-      //   title: "Real-time Processing",
-      //   description:
-      //     "Get instant results powered by our advanced machine learning models with minimal processing time.",
-      // },
-      // {
-      //   icon: <BarChart className="h-10 w-10 text-white" />,
-      //   title: "Data Visualization",
-      //   description: "View comprehensive data visualizations to understand weather patterns and predictions better.",
-      // },
-      // {
-      //   icon: <CloudLightning className="h-10 w-10 text-white" />,
-      //   title: "Extreme Weather Alerts",
-      //   description: "Receive alerts for potential extreme weather conditions based on our predictive models.",
-      // },
-      // {
-      //   icon: <Database className="h-10 w-10 text-white" />,
-      //   title: "Historical Data Analysis",
-      //   description: "Access and analyze historical weather data to understand trends and patterns over time.",
-      // },
-    ],
-    [],
-  )
-
-  const aboutItems = React.useMemo(
-    () => [
-      // {
-      //   title: "Precision & Accuracy",
-      //   subtitle: "Trained on extensive Jakarta weather data",
-      //   description:
-      //     "Our models have been trained on years of Jakarta-specific weather data, providing highly accurate predictions tailored to the unique climate patterns of the region.",
-      // },
-      // {
-      //   title: "Dual Prediction Methods",
-      //   subtitle: "Flexible input options for your needs",
-      //   description:
-      //     "Choose between date-based predictions for planning ahead or parameter-based analysis for understanding specific weather conditions and their classifications.",
-      // },
-      // {
-      //   title: "User-Friendly Interface",
-      //   subtitle: "Simple, elegant, and easy to use",
-      //   description:
-      //     "Our modern interface makes accessing complex weather predictions simple for everyone, from weather enthusiasts to professionals requiring accurate data.",
-      // },
-      // {
-      //   title: "Powered by Advanced AI",
-      //   subtitle: "Cutting-edge machine learning models",
-      //   description:
-      //     "Our platform leverages sophisticated machine learning algorithms to process complex weather patterns and deliver reliable predictions with high confidence levels.",
-      // },
-    ],
-    [],
-  )
-
   const teamMembers = React.useMemo(
     () => [
       {
@@ -220,7 +151,6 @@ export default function Home() {
     [],
   )
 
-  // Memoized function to render feature icons with proper type checking
   const renderIcon = useCallback((icon: React.ReactNode) => {
     if (React.isValidElement(icon)) {
       return React.cloneElement(icon, { className: "h-10 w-10 text-blue-400" })
@@ -310,53 +240,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Features Section */}
-        {/* <section id="features" ref={featuresRef} className="py-20 relative">
-          <div className="absolute inset-0 bg-black/50"></div>
-          <div className="container relative z-10 px-4 md:px-6">
-            <SectionHeading
-              title="Advanced Prediction Features"
-              subtitle="Our AI-powered platform provides accurate and reliable weather predictions for Jakarta using cutting-edge machine learning models."
-              centered={true}
-            />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-blue-500/50 card-hover"
-                >
-                  <div className="mb-4 relative">
-                    {renderIcon(feature.icon)}
-                    <div className="absolute inset-0 blur-sm bg-blue-400 opacity-30 rounded-full"></div>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">{feature.title}</h3>
-                  <p className="text-gray-300">{feature.description}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-16 text-center"
-            >
-              <Button asChild size="lg" className="bg-white text-black hover:bg-gray-200 transition-all duration-300">
-                <Link href="/predict">
-                  Try Our Prediction Tool <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </motion.div>
-          </div>
-        </section> */}
-
-        {/* Team Members Section */}
         <section id="team" ref={teamRef} className="py-20 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black"></div>
           <div className="container relative z-10 px-4 md:px-6">
@@ -384,7 +268,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* AI Models Section */}
         <section id="ai-models" ref={aiModelsRef} className="py-20 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-black to-black/90"></div>
           <div className="absolute inset-0 grid-pattern opacity-10"></div>
@@ -409,58 +292,9 @@ export default function Home() {
               ))}
             </div>
 
-            {/* <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-16 p-6 glass-effect rounded-xl border border-white/10 max-w-3xl mx-auto"
-            >
-              <h3 className="text-xl font-bold mb-4 text-white">Technical Implementation</h3>
-              <p className="text-gray-300 mb-4">
-                Our AI system combines multiple models in an ensemble approach to achieve the highest possible accuracy.
-                The prediction pipeline processes historical weather data, satellite imagery, and real-time sensor
-                readings through our proprietary preprocessing algorithms before feeding them into our neural network
-                architecture.
-              </p>
-              <p className="text-gray-300">
-                The system is continuously trained on new data, with regular model evaluations and updates to ensure
-                optimal performance as weather patterns evolve. All models are deployed using TensorFlow Serving for
-                efficient inference and seamless integration with our web application.
-              </p>
-            </motion.div> */}
           </div>
         </section>
 
-        {/* Why Use This Website Section
-        <section id="about" ref={aboutRef} className="py-20 relative">
-          <div className="absolute inset-0 bg-gradient-to-b from-black to-black/80"></div>
-          <div className="container relative z-10 px-4 md:px-6">
-            <SectionHeading
-              title="Why Choose Our Platform"
-              subtitle="Our AI-powered weather prediction service offers unique advantages for Jakarta residents and visitors."
-            />
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {aboutItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="glass-effect rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 hover-glow"
-                >
-                  <h3 className="text-xl font-bold mb-1 text-white">{item.title}</h3>
-                  <p className="text-blue-400 mb-4 text-sm">{item.subtitle}</p>
-                  <p className="text-gray-300">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section> */}
-
-        {/* CTA Section */}
         <section className="py-20 relative">
           <div className="absolute inset-0 bg-white/5"></div>
           <div className="absolute inset-0 grid-pattern opacity-20"></div>
