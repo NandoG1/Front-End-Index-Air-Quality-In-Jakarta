@@ -44,7 +44,7 @@ export default function PredictPage() {
   const [activeTab, setActiveTab] = useState("date")
   const [isPageLoaded, setIsPageLoaded] = useState(false)
 
-  const API_BASE_URL = "http://localhost:5000/api"
+  const API_BASE_URL = "https://back-end-air-quality-index-in-jakarta-production.up.railway.app/api"
 
   useEffect(() => {
     setIsPageLoaded(true)
