@@ -90,30 +90,30 @@ export default function Home() {
     () => [
       {
         name: "Fernando Gunawan",
-        role: "Student at BINUS University",
-        bio: "Fernando is a Computer Science student in BINUS University, focusing on Inteligent System and Machine Learning.",
-        image: "/placeholder.svg?height=400&width=600",
+        role: "Student at University",
+        bio: "Fernando is a Computer Science student in University, focusing on Inteligent System and Machine Learning.",
+        image: "/Avatar2.png",
         github: "https://github.com/NandoG1",
         linkedin: "https://www.linkedin.com/in/fernando-gunawan-bo/",
-        email: "fernando.gunawan003@binus.ac.id",
+        email: "fernandogunawan291105@gmail.com",
       },
       {
-        name: "Akmal Hendrian Malik",
-        role: "Student at BINUS University",
-        bio: "Akmal Hendrian Malik is a Computer Science student in BINUS University, focusing on Inteligent System and Machine Learning.",
-        image: "/placeholder.svg?height=400&width=600",
-        github: "https://github.com/akmalhen",
-        linkedin: "",
-        email: "akmal.malik@binus.ac.id",
+        name: "Maxwell Garrick Tonisee",
+        role: "Student at University",
+        bio: "Maxwell Garrick Tonisee is a Computer Science student in University, focusing on Inteligent System and Machine Learning.",
+        image: "/Avatar3.png",
+        github: "https://github.com/",
+        linkedin: "https://www.linkedin.com/",
+        email: "",
       },
       {
-        name: "Ignatius Kevin Wijaya",
-        role: "Student at BINUS University",
-        bio: "Ignatius Kevin Wijaya is a Computer Science student in BINUS University, focusing on Inteligent System and Machine Learning.",
-        image: "/placeholder.svg?height=400&width=600",
+        name: "Christian Kenneth Muliadi",
+        role: "Student at University",
+        bio: "Christian Kenneth Muliadi is a Computer Science student in BINUS University, focusing on Inteligent System and Machine Learning.",
+        image: "/Avatar1.png",
         github: "",
-        linkedin: "",
-        email: "ignatius.wijaya001@binus.ac.id",
+        linkedin: "https://www.linkedin.com/",
+        email: "",
       },
     ],
     [],
@@ -122,28 +122,28 @@ export default function Home() {
   const aiModels = React.useMemo(
     () => [
       {
-        title: "LSTM Forecaster",
+        title: "Random Forest Classifier",
         description:
-          "Long Short-Term Memory neural network that excels at capturing long-term dependencies in sequential weather data for improved predictions.",
-        accuracy: "89.5% accuracy",
+          "Ensemble learning method that constructs multiple decision trees to improve the accuracy and stability of weather condition predictions.",
+        accuracy: "99.8% accuracy",
         features: [
-          "Sequential data processing",
-          "Long-term pattern memory",
-          "Gradient flow optimization",
-          "Specialized for seasonal transitions",
+          "Bagging-based ensemble method",
+          "Reduces overfitting",
+          "Handles high-dimensional data",
+          "Works well with both categorical and numerical features",
         ],
         icon: <Network className="h-8 w-8 text-blue-400" />,
       },
       {
-        title: "XGBoost Classifier",
+        title: "LightGBM Classifier",
         description:
-          "Gradient boosting ensemble model that combines multiple decision trees to provide robust classification of weather conditions.",
-        accuracy: "94.1% accuracy",
+          "A highly efficient gradient boosting framework that uses histogram-based algorithms for fast and accurate weather classification.",
+        accuracy: "71.2% accuracy",
         features: [
-          "Feature importance ranking",
-          "Robust to outliers",
-          "Handles missing data",
-          "Optimized for classification tasks",
+          "Histogram-based decision tree learning",
+          "Faster training speed and lower memory usage",
+          "Efficient with large datasets",
+          "Supports categorical features natively",
         ],
         icon: <Cpu className="h-8 w-8 text-blue-400" />,
       },
@@ -233,7 +233,7 @@ export default function Home() {
                   <p className="font-medium text-white">Weather Prediction</p>
                 </div>
                 <p className="text-sm text-gray-300">
-                  Our AI predicts with 92% accuracy based on historical Jakarta weather data
+                  Our AI predicts with 99% accuracy based on historical Jakarta weather data
                 </p>
               </OptimizedMotion>
             </OptimizedMotion>
