@@ -30,7 +30,7 @@ import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
 export default function PredictPage() {
-  const [date, setDate] = useState<Date | undefined>(undefined)
+  const [date, setDate] = useState<Date>(new Date())
   const [parameters, setParameters] = useState({
     pm10: 50,
     co: 1.5,
@@ -44,10 +44,12 @@ export default function PredictPage() {
   const [activeTab, setActiveTab] = useState("date")
   const [isPageLoaded, setIsPageLoaded] = useState(false)
 
-  const API_BASE_URL = "https://back-end-air-quality-index-in-jakarta-production-d42f.up.railway.app/api"
+  // const API_BASE_URL = "https://back-end-air-quality-index-in-jakarta-production-d42f.up.railway.app/api"
+  const API_BASE_URL = "https://lovely-tenderness-production.up.railway.app/api"
 
   useEffect(() => {
     setIsPageLoaded(true)
+    // No longer automatically fetch prediction when the page loads
   }, [])
 
   useEffect(() => {
@@ -90,6 +92,13 @@ export default function PredictPage() {
     } finally {
       setLoading(false)
     }
+  }
+  
+  const selectDate = (e: React.MouseEvent, daysFromToday: number) => {
+    e.preventDefault()
+    const selectedDate = new Date()
+    selectedDate.setDate(selectedDate.getDate() + daysFromToday)
+    setDate(selectedDate)
   }
 
   const handleParametersSubmit = async (e: React.FormEvent) => {
@@ -329,29 +338,43 @@ export default function PredictPage() {
                         <Label htmlFor="date" className="text-white">
                           Select Date
                         </Label>
-                        <Popover>
-                          <PopoverTrigger asChild>
-                            <Button
-                              variant="outline"
-                              className={cn(
-                                "w-full justify-start text-left font-normal border-white/20 bg-black hover:bg-white/10 transition-all duration-300",
-                                !date && "text-gray-400",
-                              )}
-                            >
-                              <CalendarIcon className="mr-2 h-4 w-4" />
-                              {date ? format(date, "PPP") : "Select a date"}
-                            </Button>
-                          </PopoverTrigger>
-                          <PopoverContent className="w-auto p-0 bg-black border-white/20">
-                            <Calendar
-                              mode="single"
-                              selected={date}
-                              onSelect={setDate}
-                              initialFocus
-                              className="bg-black text-white"
-                            />
-                          </PopoverContent>
-                        </Popover>
+                        <div className="grid grid-cols-3 gap-2">
+                          <Button
+                            variant={date && format(date, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd') ? "default" : "outline"}
+                            onClick={(e) => selectDate(e, 0)}
+                            className={cn(
+                              "w-full border-white/20 transition-all duration-300",
+                              date && format(date, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd') ? "bg-white/20 hover:bg-white/30 text-white" : "bg-black hover:bg-white/10"
+                            )}
+                          >
+                            Today
+                          </Button>
+                          <Button
+                            variant={date && format(date, 'yyyy-MM-dd') === format(new Date(new Date().setDate(new Date().getDate() + 1)), 'yyyy-MM-dd') ? "default" : "outline"}
+                            onClick={(e) => selectDate(e, 1)}
+                            className={cn(
+                              "w-full border-white/20 transition-all duration-300",
+                              date && format(date, 'yyyy-MM-dd') === format(new Date(new Date().setDate(new Date().getDate() + 1)), 'yyyy-MM-dd') ? "bg-white/20 hover:bg-white/30 text-white" : "bg-black hover:bg-white/10"
+                            )}
+                          >
+                            Tomorrow
+                          </Button>
+                          <Button
+                            variant={date && format(date, 'yyyy-MM-dd') === format(new Date(new Date().setDate(new Date().getDate() + 2)), 'yyyy-MM-dd') ? "default" : "outline"}
+                            onClick={(e) => selectDate(e, 2)}
+                            className={cn(
+                              "w-full border-white/20 transition-all duration-300",
+                              date && format(date, 'yyyy-MM-dd') === format(new Date(new Date().setDate(new Date().getDate() + 2)), 'yyyy-MM-dd') ? "bg-white/20 hover:bg-white/30 text-white" : "bg-black hover:bg-white/10"
+                            )}
+                          >
+                            In 2 Days
+                          </Button>
+                        </div>
+                        <div className="pt-2">
+                          <p className="text-sm text-gray-400">
+                            Selected: <span className="font-medium text-white">{date ? format(date, "PPP") : "None"}</span>
+                          </p>
+                        </div>
                       </div>
 
                       <Button

@@ -13,6 +13,9 @@ import {
   Brain,
   Cpu,
   Network,
+  Calendar,
+  Plus, 
+  Minus
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Header from "@/components/header"
@@ -29,6 +32,7 @@ export default function Home() {
   const teamRef = useRef<HTMLDivElement>(null)
   const aiModelsRef = useRef<HTMLDivElement>(null)
   const [isClient, setIsClient] = useState(false)
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null)
 
   useEffect(() => {
     setIsClient(true)
@@ -49,8 +53,9 @@ export default function Home() {
         const element = document.getElementById(id)
         if (element) {
           requestAnimationFrame(() => {
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
             element.scrollIntoView({
-              behavior: window.prefersReducedMotion ? "auto" : "smooth",
+              behavior: prefersReducedMotion ? "auto" : "smooth",
             })
           })
         }
@@ -86,6 +91,40 @@ export default function Home() {
     [],
   )
 
+   const faqData = React.useMemo(
+    () => [
+      {
+        question: "How accurate are the weather predictions?",
+        answer: "Our Random Forest Classifier achieves 99.8% accuracy on historical Jakarta weather data, while our LightGBM model reaches 71.2% accuracy. We continuously train our models with the latest weather data to maintain high precision."
+      },
+      {
+        question: "What weather parameters can I use for prediction?",
+        answer: "You can input various air quality and atmospheric parameters including PM2.5, PM10, SO2, NO2, O3, CO levels, temperature, humidity, and wind speed. Our AI models analyze these parameters to predict weather conditions."
+      },
+      {
+        question: "Can I predict weather for specific dates?",
+        answer: "Yes! Our platform offers two prediction methods: date-based predictions for future dates and parameter-based classifications where you can adjust specific atmospheric conditions using our intuitive sliders."
+      },
+      {
+        question: "What types of weather conditions can be predicted?",
+        answer: "Our AI models can classify weather into various categories including sunny, cloudy, rainy, stormy, and other weather patterns specific to Jakarta's tropical climate. The predictions include confidence scores and detailed explanations."
+      },
+      {
+        question: "Is the service free to use?",
+        answer: "Yes, our Jakarta Weather AI prediction tool is completely free to use. We believe in making accurate weather information accessible to everyone in the Jakarta community."
+      },
+      {
+        question: "How often is the model updated?",
+        answer: "We continuously update our models with fresh weather data from Jakarta. Our machine learning pipeline automatically retrains the models weekly to ensure they adapt to changing weather patterns and maintain accuracy."
+      }
+    ],
+    []
+  )
+
+  const toggleFAQ = useCallback((index: number) => {
+    setOpenFAQ(openFAQ === index ? null : index)
+  }, [openFAQ])
+
   const teamMembers = React.useMemo(
     () => [
       {
@@ -98,18 +137,18 @@ export default function Home() {
         email: "fernandogunawan291105@gmail.com",
       },
       {
-        name: "Maxwell Garrick Tonisee",
+        name: "Akmal Hendrian Malik",
         role: "Student at University",
-        bio: "Maxwell Garrick Tonisee is a Computer Science student in University, focusing on Inteligent System and Machine Learning.",
+        bio: "Akmal Hendrian Malik is a Computer Science student in University, focusing on Inteligent System and Machine Learning.",
         image: "/Avatar3.png",
         github: "https://github.com/",
         linkedin: "https://www.linkedin.com/",
         email: "",
       },
       {
-        name: "Christian Kenneth Muliadi",
+        name: "Ignaitus Kevin Wijaya",
         role: "Student at University",
-        bio: "Christian Kenneth Muliadi is a Computer Science student in BINUS University, focusing on Inteligent System and Machine Learning.",
+        bio: "Ignaitus Kevin Wijaya is a Computer Science student in BINUS University, focusing on Inteligent System and Machine Learning.",
         image: "/Avatar1.png",
         github: "",
         linkedin: "https://www.linkedin.com/",
@@ -138,7 +177,7 @@ export default function Home() {
         title: "LightGBM Classifier",
         description:
           "A highly efficient gradient boosting framework that uses histogram-based algorithms for fast and accurate weather classification.",
-        accuracy: "71.2% accuracy",
+        accuracy: "65.2% accuracy",
         features: [
           "Histogram-based decision tree learning",
           "Faster training speed and lower memory usage",
@@ -153,7 +192,7 @@ export default function Home() {
 
   const renderIcon = useCallback((icon: React.ReactNode) => {
     if (React.isValidElement(icon)) {
-      return React.cloneElement(icon, { className: "h-10 w-10 text-blue-400" })
+      return React.cloneElement(icon as React.ReactElement<any>, { className: "h-10 w-10 text-blue-400" })
     }
     return icon
   }, [])
@@ -209,8 +248,12 @@ export default function Home() {
             </OptimizedMotion>
 
             <OptimizedMotion
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
+              variants={{
+                initial: { opacity: 0, y: 40 },
+                animate: { opacity: 1, y: 0 }
+              }}
+              initial="initial"
+              animate="animate"
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative mt-16 max-w-5xl mx-auto"
             >
@@ -223,8 +266,12 @@ export default function Home() {
                 />
               </div>
               <OptimizedMotion
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
+                variants={{
+                  initial: { opacity: 0, x: 20 },
+                  animate: { opacity: 1, x: 0 }
+                }}
+                initial="initial"
+                animate="animate"
                 transition={{ duration: 0.5, delay: 0.8 }}
                 className="absolute -bottom-6 -right-6 glass-effect p-4 rounded-lg max-w-xs"
               >
@@ -240,6 +287,95 @@ export default function Home() {
           </div>
         </section>
 
+        {/* How It Works Section */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 to-black"></div>
+          <div className="absolute inset-0 grid-pattern opacity-10"></div>
+          <div className="container relative z-10 px-4 md:px-6">
+            <SectionHeading
+              title="How It Works"
+              subtitle="Experience our AI-powered weather prediction in three simple steps"
+              centered={true}
+            />
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+              <OptimizedMotion
+                variants={fadeInUp}
+                className="relative group"
+              >
+                <div className="glass-effect rounded-xl p-6 h-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300">
+                    1
+                  </div>
+                  <div className="mt-4">
+                    <h3 className="text-xl font-semibold text-white mb-3">Choose Prediction Method</h3>
+                    <p className="text-gray-300">
+                      Select between date-based prediction or parameter-based classification based on your needs.
+                    </p>
+                  </div>
+                  <div className="mt-6 flex justify-center">
+                    <Calendar className="h-16 w-16 text-blue-400 opacity-80 group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                </div>
+              </OptimizedMotion>
+
+              <OptimizedMotion
+                variants={fadeInUp}
+                className="relative group"
+              >
+                <div className="glass-effect rounded-xl p-6 h-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300">
+                    2
+                  </div>
+                  <div className="mt-4">
+                    <h3 className="text-xl font-semibold text-white mb-3">Input Parameters</h3>
+                    <p className="text-gray-300">
+                      Enter your desired date or adjust the air quality parameters using our intuitive sliders.
+                    </p>
+                  </div>
+                  <div className="mt-6 flex justify-center">
+                    <BarChart className="h-16 w-16 text-blue-400 opacity-80 group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                </div>
+              </OptimizedMotion>
+
+              <OptimizedMotion
+                variants={fadeInUp}
+                className="relative group"
+              >
+                <div className="glass-effect rounded-xl p-6 h-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300">
+                    3
+                  </div>
+                  <div className="mt-4">
+                    <h3 className="text-xl font-semibold text-white mb-3">Get Results</h3>
+                    <p className="text-gray-300">
+                      Receive detailed predictions with visualizations and actionable recommendations.
+                    </p>
+                  </div>
+                  <div className="mt-6 flex justify-center">
+                    <Brain className="h-16 w-16 text-blue-400 opacity-80 group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                </div>
+              </OptimizedMotion>
+            </div>
+
+            <OptimizedMotion
+              variants={fadeInUp}
+              className="mt-16 text-center"
+            >
+              <Button
+                asChild
+                size="lg"
+                className="bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300"
+              >
+                <Link href="/predict">
+                  Start Predicting Now <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </OptimizedMotion>
+          </div>
+        </section>
 
         <section id="team" ref={teamRef} className="py-20 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black"></div>
@@ -292,6 +428,86 @@ export default function Home() {
               ))}
             </div>
 
+          </div>
+        </section>
+
+         {/* FAQ Section */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 to-black"></div>
+          <div className="absolute inset-0 grid-pattern opacity-10"></div>
+          <div className="container relative z-10 px-4 md:px-6">
+            <SectionHeading
+              title="Frequently Asked Questions"
+              subtitle="Everything you need to know about our AI-powered weather prediction platform"
+              centered={true}
+            />
+
+            <div className="max-w-4xl mx-auto mt-16">
+              <OptimizedMotion variants={staggerContainer} className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <OptimizedMotion
+                    key={index}
+                    variants={fadeInUp}
+                    className="group"
+                  >
+                    <div className="glass-effect rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]">
+                      <button
+                        onClick={() => toggleFAQ(index)}
+                        className="w-full px-6 py-6 text-left flex items-center justify-between group-hover:bg-white/5 transition-all duration-300"
+                      >
+                        <h3 className="text-lg font-semibold text-white pr-4">
+                          {faq.question}
+                        </h3>
+                        <div className="flex-shrink-0">
+                          <OptimizedMotion
+                            variants={{
+                              initial: { rotate: 0 },
+                              animate: { rotate: openFAQ === index ? 180 : 0 }
+                            }}
+                            initial="initial"
+                            animate="animate"
+                            transition={{ duration: 0.3 }}
+                            className="text-blue-400"
+                          >
+                            {openFAQ === index ? (
+                              <Minus className="h-5 w-5" />
+                            ) : (
+                              <Plus className="h-5 w-5" />
+                            )}
+                          </OptimizedMotion>
+                        </div>
+                      </button>
+                      
+                      <OptimizedMotion
+                        variants={{
+                          initial: {
+                            height: 0,
+                            opacity: 0
+                          },
+                          animate: {
+                            height: openFAQ === index ? "auto" : 0,
+                            opacity: openFAQ === index ? 1 : 0
+                          }
+                        }}
+                        initial="initial"
+                        animate="animate"
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-6">
+                          <div className="h-px bg-gradient-to-r from-blue-500/50 to-transparent mb-4"></div>
+                          <p className="text-gray-300 leading-relaxed">
+                            {faq.answer}
+                          </p>
+                        </div>
+                      </OptimizedMotion>
+                    </div>
+                  </OptimizedMotion>
+                ))}
+              </OptimizedMotion>
+            </div>
+
+          
           </div>
         </section>
 
