@@ -45,6 +45,7 @@ export default function PredictPage() {
   const [isPageLoaded, setIsPageLoaded] = useState(false)
 
   // const API_BASE_URL = "https://back-end-air-quality-index-in-jakarta-production-d42f.up.railway.app/api"
+  // const API_BASE_URL = "https://lovely-tenderness-production.up.railway.app/api"
   const API_BASE_URL = "https://lovely-tenderness-production.up.railway.app/api"
 
   useEffect(() => {
