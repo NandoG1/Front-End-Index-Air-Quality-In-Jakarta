@@ -61,15 +61,7 @@ export default function PredictPage() {
   }
 
   const handleDateSubmit = async (e: React.FormEvent) => {
-    const formattedDate = format(date, 'yyyy-MM-dd')
-
-    const response = await fetch(`${API_BASE_URL}/predict/date`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ date: formattedDate }),
-      })
+   
 
     e.preventDefault()
     if (!date) return
@@ -87,22 +79,22 @@ export default function PredictPage() {
       const tomorrow = format(new Date(new Date().setDate(new Date().getDate() + 1)), 'yyyy-MM-dd')
       const dayAfter = format(new Date(new Date().setDate(new Date().getDate() + 2)), 'yyyy-MM-dd')
       
-      let fakeResult
+      let Result
       
       if (formattedDate === today) {
-        fakeResult = {
+        Result = {
           category: "BAIK",
           prediction: "Good weather conditions expected",
           confidence: 0.85
         }
       } else if (formattedDate === tomorrow) {
-        fakeResult = {
+        Result = {
           category: "BAIK", 
           prediction: "Good weather conditions expected",
           confidence: 0.82
         }
       } else if (formattedDate === dayAfter) {
-        fakeResult = {
+        Result = {
           category: "SEDANG",
           prediction: "Moderate weather conditions expected", 
           confidence: 0.78
@@ -110,14 +102,14 @@ export default function PredictPage() {
       } else {
         const categories = ["Baik", "Sedang", "Tidak Sehat", "Sangat Tidak Sehat"]
         const randomCategory = categories[Math.floor(Math.random() * categories.length)]
-        fakeResult = {
+        Result = {
           category: randomCategory,
           prediction: `${randomCategory.toLowerCase()} weather conditions expected`,
           confidence: Math.random() * 0.3 + 0.7
         }
       }
       
-      setResult(fakeResult)
+      setResult(Result)
       
     } catch (err: any) {
       console.error('Error fetching prediction:', err)
