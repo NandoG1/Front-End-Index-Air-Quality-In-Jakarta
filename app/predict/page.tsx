@@ -61,61 +61,39 @@ export default function PredictPage() {
   }
 
   const handleDateSubmit = async (e: React.FormEvent) => {
-  e.preventDefault()
-  if (!date) return
+    e.preventDefault()
+    if (!date) return
 
-  setLoading(true)
-  setResult(null)
-  setError(null)
+    setLoading(true)
+    setResult(null)
+    setError(null)
 
-  try {
-    const formattedDate = format(date, 'yyyy-MM-dd')
-    
-    await new Promise(resolve => setTimeout(resolve, 1000)) 
-    
-    const today = format(new Date(), 'yyyy-MM-dd')
-    const tomorrow = format(new Date(new Date().setDate(new Date().getDate() + 1)), 'yyyy-MM-dd')
-    const dayAfter = format(new Date(new Date().setDate(new Date().getDate() + 2)), 'yyyy-MM-dd')
-    
-    let fakeResult
-    
-    if (formattedDate === today) {
-      fakeResult = {
-        category: "BAIK",
-        prediction: "Good weather conditions expected",
-        confidence: 0.85
+    try {
+      const formattedDate = format(date, 'yyyy-MM-dd')
+      
+      const response = await fetch(`${API_BASE_URL}/predict/date`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ date: formattedDate }),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to get prediction')
       }
-    } else if (formattedDate === tomorrow) {
-      fakeResult = {
-        category: "BAIK", 
-        prediction: "Good weather conditions expected",
-        confidence: 0.82
-      }
-    } else if (formattedDate === dayAfter) {
-      fakeResult = {
-        category: "SEDANG",
-        prediction: "Moderate weather conditions expected", 
-        confidence: 0.78
-      }
-    } else {
-      const categories = ["Baik", "Sedang", "Tidak Sehat", "Sangat Tidak Sehat"]
-      const randomCategory = categories[Math.floor(Math.random() * categories.length)]
-      fakeResult = {
-        category: randomCategory,
-        prediction: `${randomCategory.toLowerCase()} weather conditions expected`,
-        confidence: Math.random() * 0.3 + 0.7
-      }
+
+      const data = await response.json()
+      setResult(data)
+    } catch (err: any) {
+      console.error('Error fetching prediction:', err)
+      setError(err.message || 'Failed to get prediction. Please try again.')
+    } finally {
+      setLoading(false)
     }
-    
-    setResult(fakeResult)
-    
-  } catch (err: any) {
-    console.error('Error fetching prediction:', err)
-    setError(err.message || 'Failed to get prediction. Please try again.')
-  } finally {
-    setLoading(false)
   }
-}
+
   
   const selectDate = (e: React.MouseEvent, daysFromToday: number) => {
     e.preventDefault()
