@@ -71,10 +71,8 @@ export default function PredictPage() {
   try {
     const formattedDate = format(date, 'yyyy-MM-dd')
     
-    // Fake API call with predetermined responses
-    await new Promise(resolve => setTimeout(resolve, 1000)) // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 1000)) 
     
-    // Get current date strings for comparison
     const today = format(new Date(), 'yyyy-MM-dd')
     const tomorrow = format(new Date(new Date().setDate(new Date().getDate() + 1)), 'yyyy-MM-dd')
     const dayAfter = format(new Date(new Date().setDate(new Date().getDate() + 2)), 'yyyy-MM-dd')
@@ -100,13 +98,12 @@ export default function PredictPage() {
         confidence: 0.78
       }
     } else {
-      // For any other date, return a random result
       const categories = ["Baik", "Sedang", "Tidak Sehat", "Sangat Tidak Sehat"]
       const randomCategory = categories[Math.floor(Math.random() * categories.length)]
       fakeResult = {
         category: randomCategory,
         prediction: `${randomCategory.toLowerCase()} weather conditions expected`,
-        confidence: Math.random() * 0.3 + 0.7 // Random confidence between 0.7-1.0
+        confidence: Math.random() * 0.3 + 0.7
       }
     }
     
