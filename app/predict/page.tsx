@@ -83,19 +83,19 @@ export default function PredictPage() {
     
     if (formattedDate === today) {
       fakeResult = {
-        category: "Baik",
+        category: "BAIK",
         prediction: "Good weather conditions expected",
         confidence: 0.85
       }
     } else if (formattedDate === tomorrow) {
       fakeResult = {
-        category: "Baik", 
+        category: "BAIK", 
         prediction: "Good weather conditions expected",
         confidence: 0.82
       }
     } else if (formattedDate === dayAfter) {
       fakeResult = {
-        category: "Sedang",
+        category: "SEDANG",
         prediction: "Moderate weather conditions expected", 
         confidence: 0.78
       }
