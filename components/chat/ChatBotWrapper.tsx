@@ -3,7 +3,6 @@
 import { useSession } from 'next-auth/react';
 import dynamic from 'next/dynamic';
 
-// Dynamically import 
 const ChatBot = dynamic(() => import('./ChatBot'), { ssr: false });
 
 const ChatBotWrapper = () => {
