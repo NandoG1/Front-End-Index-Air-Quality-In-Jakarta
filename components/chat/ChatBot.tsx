@@ -130,7 +130,7 @@ const ChatBot = () => {
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
                   <Bot className="h-5 w-5 text-white" />
                 </div>
-                <h3 className="font-medium text-white">FinTrack Assistant</h3>
+                <h3 className="font-medium text-white">Weather AI Assistant</h3>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
@@ -147,9 +147,9 @@ const ChatBot = () => {
                   <div className="mb-4 rounded-full bg-blue-500/10 p-3">
                     <Bot className="h-8 w-8 text-blue-500" />
                   </div>
-                  <h4 className="mb-2 text-lg font-medium text-white">FinTrack AI Assistant</h4>
+                  <h4 className="mb-2 text-lg font-medium text-white">Weather AI Assistant</h4>
                   <p className="max-w-xs text-sm text-gray-400">
-                    I can help you with financial advice, budgeting tips, and answer questions about your finances.
+                    I can help you with weather, air quality, and answer questions about your weather.
                   </p>
                 </div>
               ) : (
