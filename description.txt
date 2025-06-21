@@ -1,0 +1,113 @@
+JAKARTA WEATHER AI - PROJECT DESCRIPTION
+==========================================
+
+PROJECT OVERVIEW
+-----------------
+Jakarta Weather AI is an intelligent web application that provides weather predictions and air quality classification for Jakarta, Indonesia. The application leverages artificial intelligence and machine learning models to analyze environmental data and deliver accurate forecasts to help users make informed decisions about their daily activities and health precautions.
+
+The system offers 3 main prediction modes:
+1. Date-based weather prediction - Users can select specific dates to get weather forecasts
+2. Parameter-based air quality classification - Users can input environmental parameters to get real-time air quality 
+3. ChatBot using Gemini API
+
+FEATURES
+--------
+✓ Interactive Date Picker
+  - Calendar interface for selecting prediction dates
+  - Quick selection buttons for Today, Tomorrow, and Day After Tomorrow
+  - Intuitive date navigation
+
+✓ Real-time Parameter Input
+  - Adjustable sliders for environmental parameters (PM10, CO, SO2, NO2, O3)
+  - Live parameter value updates
+  - Visual feedback for parameter changes
+
+✓ AI-Powered Predictions
+  - Machine learning models for weather forecasting
+  - Air quality classification algorithms
+  - Confidence scoring for predictions
+
+✓ Interactive Results Display
+  - Visual icons representing weather conditions and air quality levels
+  - Color-coded categories (Good, Moderate, Unhealthy, Very Unhealthy)
+  - Detailed recommendations based on predictions
+
+✓ Health Recommendations
+  - Personalized advice based on air quality levels
+  - Activity suggestions for different weather conditions
+  - Safety precautions and health tips
+
+✓ Responsive Design
+  - Mobile-friendly interface
+  - Tablet and desktop optimization
+  - Smooth animations and transitions
+
+✓ Modern UI/UX
+  - Clean and intuitive design
+  - Animated components and smooth interactions
+  - Professional color schemes and typography
+
+TECHNOLOGY USED
+---------------
+Frontend Framework:
+- Next.js 14 (React-based framework)
+- TypeScript (Type-safe JavaScript)
+- React Hooks (State management)
+
+Styling & UI:
+- Tailwind CSS (Utility-first CSS framework)
+- Shadcn/ui (Modern UI component library)
+- Framer Motion (Animation library)
+- Lucide React (Icon library)
+
+Components & Libraries:
+- React Hook Form (Form handling)
+- Date-fns (Date manipulation)
+- React Day Picker (Calendar component)
+
+Backend Integration:
+- REST API integration
+- Fetch API for HTTP requests
+- JSON data handling
+
+Development Tools:
+- ESLint (Code linting)
+- Node.js & npm/pnpm (Package management)
+
+
+DEPLOYMENT
+----------
+The application is designed to be deployed on modern web platforms with support for:
+- Vercel (Recommended for Next.js)
+- Netlify
+- Railway
+- Traditional web servers
+
+API INTEGRATION
+---------------
+The application integrates with external APIs for:
+- Weather data fetching
+- Air quality measurements
+- Machine learning model predictions
+- Real-time environmental data
+
+FUTURE ENHANCEMENTS
+------------------
+- Historical data visualization
+- Extended forecast periods
+- User location-based predictions
+- Push notifications for air quality alerts
+- Multi-language support (Indonesian/English)
+- Data export functionality
+- Advanced analytics dashboard
+
+TARGET USERS
+------------
+- Jakarta residents and visitors
+- Health-conscious individuals
+- Outdoor activity enthusiasts
+- Environmental researchers
+- Public health officials
+- Urban planners and policymakers
+
+This project demonstrates modern web development practices, AI integration, and user-centered design principles to create a valuable tool for environmental awareness and public health in Jakarta.
