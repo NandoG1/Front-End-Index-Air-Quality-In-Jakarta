@@ -34,7 +34,6 @@ const Header = memo(function Header() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Predict", href: "/predict" },
-    { name: "Team", href: "/#team" },
     { name: "AI Models", href: "/#ai-models" },
   ]
 
