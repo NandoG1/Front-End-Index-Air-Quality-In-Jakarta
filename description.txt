@@ -73,6 +73,7 @@ Backend Integration:
 Development Tools:
 - ESLint (Code linting)
 - Node.js & npm/pnpm (Package management)
+- Gemini API Keys
 
 
 DEPLOYMENT

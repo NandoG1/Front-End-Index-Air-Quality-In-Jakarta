@@ -377,7 +377,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="team" ref={teamRef} className="py-20 relative">
+        {/* <section id="team" ref={teamRef} className="py-20 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black"></div>
           <div className="container relative z-10 px-4 md:px-6">
             <SectionHeading
@@ -402,7 +402,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section id="ai-models" ref={aiModelsRef} className="py-20 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-black to-black/90"></div>
