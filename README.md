@@ -144,8 +144,6 @@ The application provides the following air quality classifications:
 ## Team
 
 - Fernando Gunawan - Computer Science Student specializing in Intelligent Systems and Machine Learning
-- Maxwell Garrick Tonisee - Computer Science Student specializing in Intelligent Systems and Machine Learning
-- Christian Kenneth Muliadi - Computer Science Student from BINUS University specializing in Intelligent Systems and Machine Learning
 
 ## Acknowledgments
 
