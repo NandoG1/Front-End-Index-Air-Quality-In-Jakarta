@@ -221,7 +221,7 @@ const ChatBot = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Ask me anything about finance..."
+                  placeholder="Ask me anything about weather..."
                   className="w-full resize-none rounded-xl border border-white/10 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   rows={1}
                 />
