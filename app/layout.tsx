@@ -3,6 +3,7 @@ import "@/app/globals.css"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import AnimationProvider from "@/components/animation-provider"
+import ChatBotWrapper from "@/components/chat/ChatBotWrapper"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -29,6 +30,7 @@ export default function RootLayout({
             {children}
           </AnimationProvider>
         </ThemeProvider>
+        <ChatBotWrapper/>
       </body>
     </html>
   )
